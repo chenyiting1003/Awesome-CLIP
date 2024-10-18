@@ -29,6 +29,14 @@
 
 ## Retrieval
 
+## Segmentation
+
+| Title | Abstract | Intro | Useful Links |
+|:----| :---:| :----: | :---:|
+|2022|
+| [![Star](https://img.shields.io/github/stars/raoyongming/DenseCLIP.svg?style=social&label=Star)](https://github.com/raoyongming/DenseCLIP) <br> **DenseCLIP: Language-Guided Dense Prediction with Context-Aware Prompting** <br>| 文章提出一种新的框架，将clip的预训练知识迁移到下游分割、目标检测等密集任务. 作者将CLIP 中的图像-文本匹配问题转换为像素文本匹配问题，并使用像素-文本匹配问题，使用像素-文本匹配得分(pixel-text score maps)来指导密集预测模型的学习.  通过进一步使用图像中的上下文信息来提示语言模型，促进模型更好地利用预训练的知识. |<img src="./images/DenseCLIP.png"  width="1280px"/>| [[Github](https://github.com/raoyongming/DenseCLIP)] <br> [[Paper](https://arxiv.org/pdf/2112.01518)] |
+
+
 ## Captioning
 
 | Title | Abstract | Intro | Useful Links |
