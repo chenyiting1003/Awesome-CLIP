@@ -12,10 +12,6 @@
 
 ## Train & Finetune
 
-| Title | Abstract | Intro | Useful Links |
-|:----| :---:| :----: | :---:|
-
-
 
 ## Zero-Shot & Few-Shot
 
