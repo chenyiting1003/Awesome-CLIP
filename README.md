@@ -6,7 +6,7 @@
 | Title | Abstract | Intro | Useful Links |
 |:----| :---:| :----: | :---:|
 |2022|
-| [![Star](https://img.shields.io/github/stars/FlagAI-Open/FlagAI.svg?style=social&label=Star)](https://github.com/FlagAI-Open/FlagAI) <br> **AltCLIP: Altering the Language Encoder in CLIP for Extended Language Capabilities** <br>|文章提出一个概念上简单而有效的方法来训练一个强大的双语/多语多模态表示模型. 使用预训练的多语言文本编码器XLMR替换Clip的文本编码器，通过两阶段的训练模式(Teacher Learning; Contrastive Learning)对齐文本和图像表征. |<img src="./images/AltCLIP.png”  width="1280px"/>| [[Github](https://github.com/FlagAI-Open/FlagAI)] <br> [[Paper](https://arxiv.org/pdf/2211.06679)] |
+| [![Star](https://img.shields.io/github/stars/FlagAI-Open/FlagAI.svg?style=social&label=Star)](https://github.com/FlagAI-Open/FlagAI) <br> **AltCLIP: Altering the Language Encoder in CLIP for Extended Language Capabilities** <br>|文章提出一个概念上简单而有效的方法来训练一个强大的双语/多语多模态表示模型. 使用预训练的多语言文本编码器XLMR替换Clip的文本编码器，通过两阶段的训练模式(Teacher Learning; Contrastive Learning)对齐文本和图像表征. | <img src="./images/AltCLIP.png”  width="1280px"/>| [[Github](https://github.com/FlagAI-Open/FlagAI)] <br> [[Paper](https://arxiv.org/pdf/2211.06679)] |
 
 
 
