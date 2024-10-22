@@ -10,6 +10,7 @@
   - [Retrieval](#retrieval)
   - [Segmentation](#segmentation)
   - [Captioning](#captioning)
+  - [Other](#other)
 
 
 ## Train
@@ -17,9 +18,12 @@
 
 | Title | Abstract | Intro | Useful Links |
 |:----| :---:| :----: | :---:|
+|2022|
+| [![Star](https://img.shields.io/github/stars/Sense-GVT/DeCLIP.svg?style=social&label=Star)](https://github.com/Sense-GVT/DeCLIP) <br> **SUPERVISION EXISTS EVERYWHERE: A DATA
+EFFICIENT CONTRASTIVE LANGUAGE-IMAGE PRE-TRAINING PARADIGM** <br>| 本文提出一种创新的CLIP训练方式--Data efficient CLIP (DeCLIP)，来解决CLIP训练对文本-图像pair数据量的需求.  核心思想就是增加对图像-文本对的supervision(增加更多约束)，更有效地学习通用的视觉特征. 作者增加了以下监督：1.每个模态内的self-supervision;2.跨模态的多视图supervision(数据增强后的view);3.来自其他相似对的最近邻supervision.  实验证明，与base CLIP相比，更少的训练数据取得了更高的表现. |<img src="./images/DeCLIP.png"  width="1280px"/>| [[Github](https://github.com/Sense-GVT/DeCLIP)] <br> [[Paper](https://arxiv.org/pdf/2110.05208)] |
 |2023|
 | **Less is More: Removing Text-regions Improves CLIP Training Efficiency and Robustness** <br>| CLIP没有区分嵌入在图像中的文本区域的视觉语义和意义. 当嵌入区域中的文本与图像的视觉外观不匹配时，这可能导致不鲁棒性. 文章提出两种有效的方法来提高CLIP训练的效率和鲁棒性：1. 在保持相同数量的优化步骤的同时增强训练数据集；2.过滤掉图像中包含文本区域的样本.  在ImageNet和CoCo等数据集上测试，文章方法提高了Clip在下游任务的分类和检索准确率.  |<img src="./images/LessisMore.png"  width="1280px"/>| [[Paper](https://arxiv.org/pdf/2305.05095)] |
-| [![Star](https://img.shields.io/github/stars/UCSC-VLAA/CLIPA.svg?style=social&label=Star)](https://github.com/UCSC-VLAA/CLIPA) <br> **CLIPA: An Inverse Scaling Law for CLIP Training.pdf** <br>| 文章提出了一个令人惊讶的发现，即CLIP训练存在inverse scaling law，即使用的图像/文本编码器越大，可以用于训练的图像/文本tokens的序列长度越短. 此外，减少图像/文本tokens长度的策略，在确定这种缩放定律的质量方面起着至关重要的作用. 文章在有限的资源下成功训练了Clip. |<img src="./images/CLIPA.png"  width="1280px"/>| [[Github](https://github.com/UCSC-VLAA/CLIPA)] <br> [[Paper](https://arxiv.org/pdf/2305.07017)] |
+| [![Star](https://img.shields.io/github/stars/UCSC-VLAA/CLIPA.svg?style=social&label=Star)](https://github.com/UCSC-VLAA/CLIPA) <br> **CLIPA: An Inverse Scaling Law for CLIP Training** <br>| 文章提出了一个令人惊讶的发现，即CLIP训练存在inverse scaling law，即使用的图像/文本编码器越大，可以用于训练的图像/文本tokens的序列长度越短. 此外，减少图像/文本tokens长度的策略，在确定这种缩放定律的质量方面起着至关重要的作用. 文章在有限的资源下成功训练了Clip. |<img src="./images/CLIPA.png"  width="1280px"/>| [[Github](https://github.com/UCSC-VLAA/CLIPA)] <br> [[Paper](https://arxiv.org/pdf/2305.07017)] |
 | [![Star](https://img.shields.io/github/stars/UCSC-VLAA/CLIPA.svg?style=social&label=Star)](https://github.com/UCSC-VLAA/CLIPA) <br> **CLIPA-v2: Scaling CLIP Training with 81.1% Zero-shot ImageNet Accuracy within a $10,000 Budget; An Extra $4,000 Unlocks 81.8% Accuracy** <br>| 在CLIPA基础上，验证了full resolution 的token微调模型时，inverse scaling law也适用;同时验证各种不同训练参数下模型的能力，包括模型大小、数据和training schedule. |<img src="./images/CLIPA-v2.png"  width="1280px"/>| [[Github](https://github.com/UCSC-VLAA/CLIPA)] <br> [[Paper](https://arxiv.org/pdf/2306.15658)] |
 | [![Star](https://img.shields.io/github/stars/facebookresearch/flip.svg?style=social&label=Star)](https://github.com/facebookresearch/flip) <br> **Scaling Language-Image Pre-training via Masking** <br>| 文章提出了一种简单而有效的CLIP训练方法---FLIP（Fast Language-Image Pre-training）.该方法只需要在训练时随机Mask掉一部分图像. 实验证明，与标准CLIP详细，该方法在训练速度和模型精度方面都有提升. 文章受到MAE的启发. 引入masking，使模型在“how carefully we look at a sample pair” 和 “how many sample pairs we can process”之间做trade-off. 因为Vit encoder只用于visible patches，当mask掉一部分图像时，可以节约相应的显存，这样降低了计算量，可以使用更大的batchsize，对contrastive loss更加友好.  同时，masking作为一种形式的噪声和正则化可以提高鲁棒性.  |<img src="./images/flip.png"  width="1280px"/>| [[Github](https://github.com/facebookresearch/flip)] <br> [[Paper](https://arxiv.org/pdf/2212.00794)] |
 |2024|
@@ -132,3 +136,12 @@
 | [![Star](https://img.shields.io/github/stars/DavidHuji/CapDec.svg?style=social&label=Star)](https://github.com/DavidHuji/CapDec) <br> **CapDec: Text-Only Training for Image Captioning using Noise-Injected CLIP** <br>| 文章认为，Clip模型的训练，就是将抽取的文本和图片特征尽可能相似. 基于这个观察，只需要设计一个decoder，仅利用文本数据学习如何将文本特征“翻译”到文本，即可实现图片captioning.  |<img src="./images/CapDec.png"  width="1280px"/>| [[Github](https://github.com/DavidHuji/CapDec)] <br> [[Paper](https://arxiv.org/pdf/2211.00575)] |
 |2023|
 | [![Star](https://img.shields.io/github/stars/dhg-wei/DeCap.svg?style=social&label=Star)](https://github.com/dhg-wei/DeCap) <br> **DECAP: DECODING CLIP LATENTS FOR ZERO-SHOT CAPTIONING VIA TEXT-ONLY TRAINING** <br>|文章提出一个简单的框架来实现Zero-shot Captioning. clip的 text encoder作为输入，使用text-only数据训练一个text decoder。同时，为了解决多模态对比学习中的modality gap问题，作者将 image embedding 送入 text decoder 中解码，实现 Zero-shot Captioning.  |<img src="./images/DeCap.png"  width="1280px"/>| [[Github](https://github.com/dhg-wei/DeCap)] <br> [[Paper](https://openreview.net/pdf?id=Lt8bMlhiwx2)] |
+
+
+## Other
+
+
+| Title | Abstract | Intro | Useful Links |
+|:----| :---:| :----: | :---:|
+|2022|
+| [![Star](https://img.shields.io/github/stars/Sense-GVT/DeCLIP.svg?style=social&label=Star)](https://github.com/Sense-GVT/DeCLIP) <br> **Democratizing Contrastive Language-Image Pre-training: A CLIP Benchmark of Data, Model, and Supervision** <br>| 文章提出CLIP-benchmark，是第一个对CLIP及其变体进行评估、分析和测试的基准. 同时，作者提出三个观点，1.数据质量对性能有很大影响；2..某些supervision对卷积网络（ConvNets）和视觉变换器（ViT）有不同的影响. 适当的supervision可以有效地提高CLIP的性能; 3.减少文本编码器可以降低训练成本，但对最终性能影响不大.  此外，作者将DeCLIP与FLIP结合，得到一个性能较好的CLIP变体: DeFILIP.|| [[Github](https://github.com/Sense-GVT/DeCLIP)] <br> [[Paper](https://arxiv.org/pdf/2203.05796)] |
