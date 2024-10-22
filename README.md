@@ -1,7 +1,31 @@
 # Awesome-CLIP
 
+- [Awesome-CLIP](#awesome-clip)
+  - [Train](#train)
+  - [Improvement \& Innovation](#improvement--innovation)
+  - [Data](#data)
+  - [Distillation](#distillation)
+  - [Loss](#loss)
+  - [Zero-Shot \& Few-Shot \& Classification](#zero-shot--few-shot--classification)
+  - [Retrieval](#retrieval)
+  - [Segmentation](#segmentation)
+  - [Captioning](#captioning)
+
+
+## Train
+
+
+| Title | Abstract | Intro | Useful Links |
+|:----| :---:| :----: | :---:|
+|2023|
+| **Less is More: Removing Text-regions Improves CLIP Training Efficiency and Robustness** <br>| CLIP没有区分嵌入在图像中的文本区域的视觉语义和意义. 当嵌入区域中的文本与图像的视觉外观不匹配时，这可能导致不鲁棒性. 文章提出两种有效的方法来提高CLIP训练的效率和鲁棒性：1. 在保持相同数量的优化步骤的同时增强训练数据集；2.过滤掉图像中包含文本区域的样本.  在ImageNet和CoCo等数据集上测试，文章方法提高了Clip在下游任务的分类和检索准确率.  |<img src="./images/LessisMore.png"  width="1280px"/>| [[Paper](https://arxiv.org/pdf/2305.05095)] |
+| [![Star](https://img.shields.io/github/stars/UCSC-VLAA/CLIPA.svg?style=social&label=Star)](https://github.com/UCSC-VLAA/CLIPA) <br> **CLIPA: An Inverse Scaling Law for CLIP Training.pdf** <br>| 文章提出了一个令人惊讶的发现，即CLIP训练存在inverse scaling law，即使用的图像/文本编码器越大，可以用于训练的图像/文本tokens的序列长度越短. 此外，减少图像/文本tokens长度的策略，在确定这种缩放定律的质量方面起着至关重要的作用. 文章在有限的资源下成功训练了Clip. |<img src="./images/CLIPA.png"  width="1280px"/>| [[Github](https://github.com/UCSC-VLAA/CLIPA)] <br> [[Paper](https://arxiv.org/pdf/2305.07017)] |
+| [![Star](https://img.shields.io/github/stars/UCSC-VLAA/CLIPA.svg?style=social&label=Star)](https://github.com/UCSC-VLAA/CLIPA) <br> **CLIPA-v2: Scaling CLIP Training with 81.1% Zero-shot ImageNet Accuracy within a $10,000 Budget; An Extra $4,000 Unlocks 81.8% Accuracy** <br>| 在CLIPA基础上，验证了full resolution 的token微调模型时，inverse scaling law也适用;同时验证各种不同训练参数下模型的能力，包括模型大小、数据和training schedule. |<img src="./images/CLIPA-v2.png"  width="1280px"/>| [[Github](https://github.com/UCSC-VLAA/CLIPA)] <br> [[Paper](https://arxiv.org/pdf/2306.15658)] |
+
+
 
 ## Improvement & Innovation
+
 
 | Title | Abstract | Intro | Useful Links |
 |:----| :---:| :----: | :---:|
@@ -17,7 +41,21 @@
 | [![Star](https://img.shields.io/github/stars/xmed-lab/CLIP_Surgery.svg?style=social&label=Star)](https://github.com/xmed-lab/CLIP_Surgery) <br> **ACloser Look at the Explainability of Contrastive Language-Image Pre-training** <br>|文章发现了CLIP的可解释性有两个问题：1.可视化结果和人的感知是反的；2.可视化有非常多的噪声响应. 针对上述问题，文章阐述了原因，并给出一个train-free的解决方法. (_工作上遇到一个问题，使用clip做相似对对比，cos相似度基本都在0.2+，这篇论文给了答案，同时Cam图的结果提升也很大._) | <img src="./images/CLIP_Surgery.png"  width="1280px"/> | [[Github](https://github.com/xmed-lab/CLIP_Surgery)] <br> [[Paper](https://arxiv.org/pdf/2304.05653)]  [[知乎](https://www.zhihu.com/question/595372017/answer/2982207851)]|
 | [![Star](https://img.shields.io/github/stars/beichenzbc/Long-CLIP.svg?style=social&label=Star)](https://github.com/beichenzbc/Long-CLIP) <br> **Long-CLIP: Unlocking the Long-Text Capability of CLIP** <br>| CLIP的文本token长度被限制为77，而研究表明实际有效长度甚至不到20. 这使得CLIP无法处理详细的描述,限制了其在图像检索和文本到图像生成方面的应用. 本文提出Long-CLIP作为CLIP的即插即用替代方案，它支持长文本输入，保留甚至超越其zero-shot的泛化能力，并调整CLIP潜在空间，使其易于取代CLIP，而无需在下游框架中进行任何进一步的调整.| <img src="./images/Long-CLIP.png"  width="1280px"/> | [[Github](https://github.com/beichenzbc/Long-CLIP)] <br> [[Paper](https://arxiv.org/pdf/2403.15378)]|
 
+
+
+## Data
+
+
+| Title | Abstract | Intro | Useful Links |
+|:----| :---:| :----: | :---:|
+|2024|
+| [![Star](https://img.shields.io/github/stars/apple/ml-veclip.svg?style=social&label=Star)](https://github.com/apple/ml-veclip) <br> **VeCLIP: Improving CLIP Training via Visual-enriched Captions** <br>| 针对网络爬虫的文本-图像数据对，进行caption重写。使用LLaVA生成caption，然后与爬虫得到的描述（AltTexts）做融合，送入Vicuna-1.1得到重写后的caption.  |<img src="./images/VeCLIP.png"  width="1280px"/>|  [[Github](https://github.com/apple/ml-veclip)] <br> [[Paper](https://arxiv.org/pdf/2310.07699)] |
+| [![Star](https://img.shields.io/github/stars/hammoudhasan/SynthCLIP.svg?style=social&label=Star)](https://github.com/hammoudhasan/SynthCLIP) <br> **SynthCLIP: Are We Ready for a Fully Synthetic CLIP Training?** <br>| 使用全合成文本图像对训练 CLIP 模型，与先前依赖于真实数据的方法有显著区别，SynthCLIP 实现了与在真实数据集上训练的 CLIP 模型相媲美的性能.  |<img src="./images/SynthCLIP.png"  width="1280px"/>|  [[Github](https://github.com/hammoudhasan/SynthCLIP)] <br> [[Paper](https://arxiv.org/pdf/2402.01832)] |
+
+
+
 ## Distillation
+
 
 | Title | Abstract | Intro | Useful Links |
 |:----| :---:| :----: | :---:|
@@ -25,7 +63,11 @@
 | [![Star](https://img.shields.io/github/stars/microsoft/Cream.svg?style=social&label=Star)](https://github.com/microsoft/Cream/tree/main/TinyCLIP) <br> **TinyCLIP: CLIP Distillation via Affinity Mimicking and Weight Inheritance** <br>|文章提出了一种面向大规模语言图像预训练模型的跨模态蒸馏方法:TinyCLIP. TinyClip包括两个核心技术: affinity mimicking and weight inheritance. 基于多级渐进式方案进行affinity mimicking和Weight inheritance，完成Clip模型的压缩及性能保真，在速度和准确度上做了较好的平衡. | <img src="./images/TinyCLIP.png"  width="1280px"/> | [[Github](https://github.com/microsoft/Cream/tree/main/TinyCLIP)] <br> [[Paper](https://arxiv.org/pdf/2211.01335)] |
 |2024|
 | [![Star](https://img.shields.io/github/stars/winycg/CLIP-KD.svg?style=social&label=Star)](https://github.com/winycg/CLIP-KD) <br> **CLIP-KD: An Empirical Study of CLIP Model Distillation** <br>|文章核心目的是利用一个大型的教师CLIP模型来监督一个小型的学生CLIP模型，使得学生CLIP模型可以在保持轻量的前提下显著提升性能. 文章从关系、特征、梯度和对比模式的角度来检验CLIP-知识蒸馏的有效性 . 最后的消融实验表明，使用简单的MSE进行特征蒸馏实现了最好的蒸馏性能. | <img src="./images/CLIP-KD.png"  width="1280px"/> | [[Github](https://github.com/winycg/CLIP-KD)] <br> [[Paper](https://arxiv.org/pdf/2307.12732)] |
+
+
+
 ## Loss
+
 
 | Title | Abstract | Intro | Useful Links |
 |:----| :---:| :----: | :---:|
@@ -35,18 +77,9 @@
 | [![Star](https://img.shields.io/github/stars/google-research/big_vision.svg?style=social&label=Star)](https://github.com/google-research/big_vision) <br> **SigLip:Sigmoid Loss for Language Image Pre-Training** <br>|文章提出了一种用于语言图像预训练（SigLIP）的简单成对 Sigmoid 损失. 与使用 Softmax 归一化的标准对比学习不同，Sigmoid 损失仅对图像-文本对进行操作，并且不需要对归一化的成对相似性进行全局视图.  Sigmoid 损失同时允许进一步扩大批量大小，同时在较小的批量大小下也能表现更好. | <img src="./images/SigLip.png"  width="1280px"/> | [[Github](https://github.com/google-research/big_vision)] <br> [[Paper](https://arxiv.org/pdf/2303.15343)] |
 
 
-## Train
-
-| Title | Abstract | Intro | Useful Links |
-|:----| :---:| :----: | :---:|
-|2023|
-| **Less is More: Removing Text-regions Improves CLIP Training Efficiency and Robustness** <br>| CLIP没有区分嵌入在图像中的文本区域的视觉语义和意义. 当嵌入区域中的文本与图像的视觉外观不匹配时，这可能导致不鲁棒性. 文章提出两种有效的方法来提高CLIP训练的效率和鲁棒性：1. 在保持相同数量的优化步骤的同时增强训练数据集；2.过滤掉图像中包含文本区域的样本.  在ImageNet和CoCo等数据集上测试，文章方法提高了Clip在下游任务的分类和检索准确率.  |<img src="./images/LessisMore.png"  width="1280px"/>| [[Paper](https://arxiv.org/pdf/2305.05095)] |
-| [![Star](https://img.shields.io/github/stars/UCSC-VLAA/CLIPA.svg?style=social&label=Star)](https://github.com/UCSC-VLAA/CLIPA) <br> **CLIPA: An Inverse Scaling Law for CLIP Training.pdf** <br>| 文章提出了一个令人惊讶的发现，即CLIP训练存在inverse scaling law，即使用的图像/文本编码器越大，可以用于训练的图像/文本tokens的序列长度越短. 此外，减少图像/文本tokens长度的策略，在确定这种缩放定律的质量方面起着至关重要的作用. 文章在有限的资源下成功训练了Clip. |<img src="./images/CLIPA.png"  width="1280px"/>| [[Github](https://github.com/UCSC-VLAA/CLIPA)] <br> [[Paper](https://arxiv.org/pdf/2305.07017)] |
-| [![Star](https://img.shields.io/github/stars/UCSC-VLAA/CLIPA.svg?style=social&label=Star)](https://github.com/UCSC-VLAA/CLIPA) <br> **CLIPA-v2: Scaling CLIP Training with 81.1% Zero-shot ImageNet Accuracy within a $10,000 Budget; An Extra $4,000 Unlocks 81.8% Accuracy** <br>| 在CLIPA基础上，验证了full resolution 的token微调模型时，inverse scaling law也适用;同时验证各种不同训练参数下模型的能力，包括模型大小、数据和training schedule. |<img src="./images/CLIPA-v2.png"  width="1280px"/>| [[Github](https://github.com/UCSC-VLAA/CLIPA)] <br> [[Paper](https://arxiv.org/pdf/2306.15658)] |
-
-
 
 ## Zero-Shot & Few-Shot & Classification
+
 
 | Title | Abstract | Intro | Useful Links |
 |:----| :---:| :----: | :---:|
@@ -65,6 +98,8 @@
 
 
 ## Retrieval
+
+
 | Title | Abstract | Intro | Useful Links |
 |:----| :---:| :----: | :---:|
 |2023|
@@ -72,7 +107,10 @@
 |2024|
 | **JINA CLIP: Your CLIP Model Is Also Your Text Retriever** <br>| 传统的text embedding模型，在文本到文本检索中出色，但无法执行cross-modal任务. 诸如Clip之类的模型，有效地对齐图像和文本嵌入，但由于其训练方法和上下文限制，因此未针对文本到文本检索进行优化. 文章提出了一种新颖的多任务对比训练方法，在单个模型中实现了state-of-the-art的文本到文本和文本到图像检索能力. |<img src="./images/JINA-CLIP.png"  width="640px"/>   | [[huggingface](https://huggingface.co/jinaai/jina-clip-v1)] <br> [[Paper](https://arxiv.org/pdf/2405.20204))] |
 
+
+
 ## Segmentation
+
 
 | Title | Abstract | Intro | Useful Links |
 |:----| :---:| :----: | :---:|
@@ -82,6 +120,7 @@
 
 ## Captioning
 
+
 | Title | Abstract | Intro | Useful Links |
 |:----| :---:| :----: | :---:|
 |2021|
@@ -90,11 +129,3 @@
 | [![Star](https://img.shields.io/github/stars/DavidHuji/CapDec.svg?style=social&label=Star)](https://github.com/DavidHuji/CapDec) <br> **CapDec: Text-Only Training for Image Captioning using Noise-Injected CLIP** <br>| 文章认为，Clip模型的训练，就是将抽取的文本和图片特征尽可能相似. 基于这个观察，只需要设计一个decoder，仅利用文本数据学习如何将文本特征“翻译”到文本，即可实现图片captioning.  |<img src="./images/CapDec.png"  width="1280px"/>| [[Github](https://github.com/DavidHuji/CapDec)] <br> [[Paper](https://arxiv.org/pdf/2211.00575)] |
 |2023|
 | [![Star](https://img.shields.io/github/stars/dhg-wei/DeCap.svg?style=social&label=Star)](https://github.com/dhg-wei/DeCap) <br> **DECAP: DECODING CLIP LATENTS FOR ZERO-SHOT CAPTIONING VIA TEXT-ONLY TRAINING** <br>|文章提出一个简单的框架来实现Zero-shot Captioning. clip的 text encoder作为输入，使用text-only数据训练一个text decoder。同时，为了解决多模态对比学习中的modality gap问题，作者将 image embedding 送入 text decoder 中解码，实现 Zero-shot Captioning.  |<img src="./images/DeCap.png"  width="1280px"/>| [[Github](https://github.com/dhg-wei/DeCap)] <br> [[Paper](https://openreview.net/pdf?id=Lt8bMlhiwx2)] |
-
-## Data
-
-| Title | Abstract | Intro | Useful Links |
-|:----| :---:| :----: | :---:|
-|2024|
-| [![Star](https://img.shields.io/github/stars/apple/ml-veclip.svg?style=social&label=Star)](https://github.com/apple/ml-veclip) <br> **VeCLIP: Improving CLIP Training via Visual-enriched Captions** <br>| 针对网络爬虫的文本-图像数据对，进行caption重写。使用LLaVA生成caption，然后与爬虫得到的描述（AltTexts）做融合，送入Vicuna-1.1得到重写后的caption.  |<img src="./images/VeCLIP.png"  width="1280px"/>|  [[Github](https://github.com/apple/ml-veclip)] <br> [[Paper](https://arxiv.org/pdf/2310.07699)] |
-| [![Star](https://img.shields.io/github/stars/hammoudhasan/SynthCLIP.svg?style=social&label=Star)](https://github.com/hammoudhasan/SynthCLIP) <br> **SynthCLIP: Are We Ready for a Fully Synthetic CLIP Training?** <br>| 使用全合成文本图像对训练 CLIP 模型，与先前依赖于真实数据的方法有显著区别，SynthCLIP 实现了与在真实数据集上训练的 CLIP 模型相媲美的性能.  |<img src="./images/SynthCLIP.png"  width="1280px"/>|  [[Github](https://github.com/hammoudhasan/SynthCLIP)] <br> [[Paper](https://arxiv.org/pdf/2402.01832)] |
