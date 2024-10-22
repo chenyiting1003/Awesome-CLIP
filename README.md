@@ -70,7 +70,7 @@
 |2023|
 | [![Star](https://img.shields.io/github/stars/ABaldrati/CLIP4Cir.svg?style=social&label=Star)](https://github.com/ABaldrati/CLIP4Cir) <br> **Composed Image Retrieval using Contrastive Learning and Task-oriented CLIP-based Features** <br>| 使用clip进行检索. 分为两步：1.微调clip的text encoder 和image encoder；2.设计一个combiner，将两个模态特征fusion，用这个特征做retrieval. |<img src="./images/CLIP4Cir1.png"  width="640px"/>   <img src="./images/CLIP4Cir2.png"  width="640px"/>| [[Github](https://github.com/ABaldrati/CLIP4Cir)] <br> [[Paper](https://arxiv.org/pdf/2308.11485)] |
 |2024|
-| **JINA CLIP: Your CLIP Model Is Also Your Text Retriever** <br>| 传统的text embedding模型，在文本到文本检索中出色，但无法执行cross-modal任务. 诸如Clip之类的模型，有效地对齐图像和文本嵌入，但由于其训练方法和上下文限制，因此未针对文本到文本检索进行优化. 文章提出了一种新颖的多任务对比训练方法，在单个模型中实现了state-of-the-art的文本到文本和文本到图像检索能力. |<img src="./images/JINA-CLIP.png"  width="640px"/>   <img src="./images/JINA-CLIP.png"  width="640px"/>| [[huggingface](https://huggingface.co/jinaai/jina-clip-v1)] <br> [[Paper](https://arxiv.org/pdf/2405.20204))] |
+| **JINA CLIP: Your CLIP Model Is Also Your Text Retriever** <br>| 传统的text embedding模型，在文本到文本检索中出色，但无法执行cross-modal任务. 诸如Clip之类的模型，有效地对齐图像和文本嵌入，但由于其训练方法和上下文限制，因此未针对文本到文本检索进行优化. 文章提出了一种新颖的多任务对比训练方法，在单个模型中实现了state-of-the-art的文本到文本和文本到图像检索能力. |<img src="./images/JINA-CLIP.png"  width="640px"/>   | [[huggingface](https://huggingface.co/jinaai/jina-clip-v1)] <br> [[Paper](https://arxiv.org/pdf/2405.20204))] |
 
 ## Segmentation
 
