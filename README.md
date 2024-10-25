@@ -10,6 +10,7 @@
   - [Retrieval](#retrieval)
   - [Segmentation](#segmentation)
   - [Captioning](#captioning)
+  - [Generation](#generation)
   - [Other](#other)
 
 
@@ -143,6 +144,14 @@
 |2023|
 | [![Star](https://img.shields.io/github/stars/dhg-wei/DeCap.svg?style=social&label=Star)](https://github.com/dhg-wei/DeCap) <br> **DECAP: DECODING CLIP LATENTS FOR ZERO-SHOT CAPTIONING VIA TEXT-ONLY TRAINING** <br>|文章提出一个简单的框架来实现Zero-shot Captioning. clip的 text encoder作为输入，使用text-only数据训练一个text decoder。同时，为了解决多模态对比学习中的modality gap问题，作者将 image embedding 送入 text decoder 中解码，实现 Zero-shot Captioning.  |<img src="./images/DeCap.png"  width="640px"/>| [[Github](https://github.com/dhg-wei/DeCap)] <br> [[Paper](https://openreview.net/pdf?id=Lt8bMlhiwx2)] |
 
+
+## Generation
+
+
+| Title | Abstract | Intro | Useful Links |
+|:----| :---:| :----: | :---:|
+|2022|
+| [![Star](https://img.shields.io/github/stars/hila-chefer/TargetCLIP.svg?style=social&label=Star)](https://github.com/hila-chefer/TargetCLIP) <br> **Image-based CLIP-Guided Essence Transfer** <br>| StyleGAN与CLIP结合实现人脸的风格迁移. <br><br>🧟‍♂️: 略读了一下，之前做过一段时间的Gan，对StyleGan还是比较了解的.  CLIP之前，基于StyleGan做一些人脸属性编辑，方法基本大同小异，效用encoder把图片映射到latent空间，然后在这个latent空间对这个向量做一些手脚，比如可以某个方向偏移、额外利用一些分类、或者做fusion等.  本文依旧是latent空间去加一个shift vector，文章称作essence vector，然后利用CLIP 的image encoder去施加监督. 文章给的生成case看着效果还可以，具体还需要测试. | <img src="./images/TargetCLIP.png"  width="640px"/>  | [[Github](https://github.com/hila-chefer/TargetCLIP)] <br> [[Paper](https://arxiv.org/pdf/2110.12427)] |
 
 ## Other
 
