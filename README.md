@@ -120,6 +120,8 @@
 
 | Title | Abstract | Intro | Useful Links |
 |:----| :---:| :----: | :---:|
+|2022|
+| [![Star](https://img.shields.io/github/stars/mzhaoshuai/CenterCLIP.svg?style=social&label=Star)](https://github.com/mzhaoshuai/CenterCLIP) <br> **CenterCLIP: Token Clustering for Efficient Text-Video Retrieval** <br>| 利用CLIP进行文本-视频检索任务，由于视频时域的连续性，会产生很多同质化的token，增加了计算成本. 为了减少冗余视频token的数量，作者提出a multi-segment token clustering算法，找到最具代表性的token并丢弃非必要的. 具体而言，将视频分片，每片单独聚类，且只保留簇的center tokens. 将所有center tokens拼接组成新的visual sequence送如入transformer进行训练. |<img src="./images/CenterCLIP.png"  width="640px"/>   <img src="./images/CLIP4Cir2.png"  width="640px"/>| [[Github](https://github.com/mzhaoshuai/CenterCLIP)] <br> [[Paper](https://arxiv.org/pdf/2205.00823)] |
 |2023|
 | [![Star](https://img.shields.io/github/stars/ABaldrati/CLIP4Cir.svg?style=social&label=Star)](https://github.com/ABaldrati/CLIP4Cir) <br> **Composed Image Retrieval using Contrastive Learning and Task-oriented CLIP-based Features** <br>| 使用clip进行检索. 分为两步：1.微调clip的text encoder 和image encoder；2.设计一个combiner，将两个模态特征fusion，用这个特征做retrieval. |<img src="./images/CLIP4Cir1.png"  width="640px"/>   <img src="./images/CLIP4Cir2.png"  width="640px"/>| [[Github](https://github.com/ABaldrati/CLIP4Cir)] <br> [[Paper](https://arxiv.org/pdf/2308.11485)] |
 |2024|
