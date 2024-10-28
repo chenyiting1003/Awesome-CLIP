@@ -8,6 +8,7 @@
   - [Loss](#loss)
   - [Zero-Shot \& Few-Shot \& Classification](#zero-shot--few-shot--classification)
   - [Retrieval](#retrieval)
+  - [Detection](#detection)
   - [Segmentation](#segmentation)
   - [Captioning](#captioning)
   - [Generation](#generation)
@@ -134,6 +135,15 @@
 | [![Star](https://img.shields.io/github/stars/aneeshan95/Sketch_LVM.svg?style=social&label=Star)](https://github.com/aneeshan95/Sketch_LVM) <br> **CLIP for All Things Zero-Shot Sketch-Based Image Retrieval, Fine-Grained or Not** <br>| 将CLIP应用于零样本草图检索任务（ZS-SBIR）,针对细粒度的检索做出改进. 主要包括1. prompt learning; 2. 引入一个正则项，使跨类别（数据集）的相对距离一致（最小化每个类别对之间的相对距离分布之间的KL散度）；3. patch shuffling，草图-图片数据对分成NxN的patch，随机做相同的shuffle. 作者认为打乱的草图应该更接近具有相同排列顺序打乱的图片，远离不同排列的图片. 这种permutation-invariance 有助于模型细粒度的理解.  通过这些设计，我与之前最先进的技术相比，性能显着提高了 26.9%.| <img src="./images/Sketch_LVM.png"  width="640px"/>| [[Github](https://github.com/aneeshan95/Sketch_LVM)] <br> [[Paper](https://arxiv.org/pdf/2303.13440)] |
 |2024|
 | **JINA CLIP: Your CLIP Model Is Also Your Text Retriever** <br>| 传统的text embedding模型，在文本到文本检索中出色，但无法执行cross-modal任务. 诸如Clip之类的模型，有效地对齐图像和文本嵌入，但由于其训练方法和上下文限制，因此未针对文本到文本检索进行优化. 文章提出了一种新颖的多任务对比训练方法，在单个模型中实现了state-of-the-art的文本到文本和文本到图像检索能力. |<img src="./images/JINA-CLIP.png"  width="640px"/>   | [[huggingface](https://huggingface.co/jinaai/jina-clip-v1)] <br> [[Paper](https://arxiv.org/pdf/2405.20204))] |
+
+
+## Detection
+
+
+| Title | Abstract | Intro | Useful Links |
+|:----| :---:| :----: | :---:|
+|2022|
+| [![Star](https://img.shields.io/github/stars/allenai/reclip.svg?style=social&label=Star)](https://github.com/allenai/reclip) <br> **ReCLIP: A Strong Zero-shot Baseline for Referring Expression Comprehension** <br>| 借助CLIP的zero-shot能力解决REC问题，提出ReCLIP.  主要包括两个关键部分: 1. Isolated Proposal Scoring (IPS) , 通过crop proposals 和 模糊除当前proposal两种方式，提取局部区域，送入CLIP算一个score，两种方式分数相加; 2.  Spatial Relation Resolver: 因为CLIP处理空间关系能力比较弱，作者利用NLP的一些基本方法，借助spaCy，通过Semantic Trees等规则，计算proposals的最终得分.  注意的是，上述两个模块的输入描述非原始描述，经过了拆分，如noun chunk .|<img src="./images/ReCLIP.png"  width="640px"/>| [[Github](https://github.com/allenai/reclip)] <br> [[Paper](https://arxiv.org/pdf/2204.05991)] |
 
 
 
