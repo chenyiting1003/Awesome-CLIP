@@ -217,6 +217,8 @@
 |2024|
 | **CLIP4Sketch: Enhancing Sketch to Mugshot Matching through Dataset Augmentation using Diffusion Models** <br>| 文章提出一种生成不同类型草图的方法，名为CLIP4Sketch.  该方法利用DDPM来生成草图，使用CLIP 和 Adaface 分别提取输入参考图片的embedding，二者fusion后与草图风格的文本描述embedding再次fusion，作为扩散模型的条件，精确控制人物身份和草图的风格. 作者利用CLIP4Sketch生成数据，并训练人脸识别模型，验证了该方案的有效性.  | <img src="./images/CLIP4Sketch.png"  width="640px"/>  | [[Paper](https://arxiv.org/pdf/2408.01233)] |
 | [![Star](https://img.shields.io/github/stars/royg27/CLIPAG.svg?style=social&label=Star)](https://github.com/royg27/CLIPAG) <br> **CLIPAG: Towards Generator-Free Text-to-Image Generation** <br>| 本文在VLM上深入研究了感知对齐梯度(PAG). 作者首先证明原始的CLIP不具备感知对齐梯度，然后为了让CLIP拥有PAG，使用了对抗性训练（adversarial training）和随机平滑（randomized smoothing）的方式是图像编码器具备PAG的能力. 实验证明，使用对抗训练的方式微调CLIP图像编码器后，与输入文本表现出最高的一致性.  作者将微调后的CLIP起名为CLIPAG. 接着作者利用“即插即用”的方式，替换一些其他文生图框架中的CLIP，如CLIPDRaw、CLIPStyle等，基于CLIPAG的框架生成的图片在各方面都优于原始CLIP.  最后，作者提出了一种无需生成器的文生图方案，利用CLIPAG的PAG能力，无需额外的生成器，迭代更新图像的pixels以更好地与文本描述对齐，实现文生图.  <br><br>🧟‍♂️: 感知对齐梯度（PAG）是指在鲁棒图像分类模型中观察到的一个有趣的属性，其中它们的输入梯度与人类感知一致并构成语义. 看完这篇文章，get到一些新知识, 最后的无需生成器的文生图方案很有想象力，nice～| <img src="./images/CLIPAG.png"  width="640px"/>  | [[Github](https://github.com/royg27/CLIPAG)] <br> [[Paper](https://arxiv.org/pdf/2306.16805)] |
+| **Text-to-Image Generation Via Energy-Based CLIP** <br>| 将Joint Energy Models引入VLM，将二者结合，改进CLIPAG生成图像不真实的问题同时，减轻JEM的可扩展性和稳定性问题. 作者提出CLIP-JEM，通过像素空间优化实现高分辨率文本到图像的生成. CLIP-JEM使用两个目标来微调CLIP：生成目标和判别目标. 针对生成目标，引入基于CLIP空间中余弦相似度的图像文本能量函数, 训练CLIP为真实的图像文本对分配低能量值，为其他图像文本对分配高能量值. 判别性则采用与CLIPAG相同的contrastive adversarial loss. 与CLIPAG、CLIP相比，LIP-JEM显示出对对抗性示例的鲁棒性和对图像质量的更高敏感性. | <img src="./images/CLIP-JEM.png"  width="640px"/>  |[[Paper](https://arxiv.org/pdf/2408.17046)] |
+
 
 
 
