@@ -19,7 +19,7 @@
 ## Explanation
 
 ### a) 模态内部自监督（Intra-modal）
-### 图像自监督：Masked Auto-Encoder（MAE）
+#### 图像自监督：Masked Auto-Encoder（MAE）
 将图像分成很多小 patch（块），然后随机遮盖掉一部分，比如遮掉 25% 或 50%，再输入给模型。
 
 模型无法全部看到图像，需要更主动地理解上下文，从剩余部分推理被遮挡区域；
@@ -27,7 +27,71 @@
 
 同时输入原图和 mask 图，通过对比学习，让视觉编码器学会对齐完整 vs 缺失图像的语义表示
 
-### 文本自监督：随机遮盖部分词汇、上下句预测下一句
+#### 文本自监督：随机遮盖部分词汇、上下句预测下一句
+
+### b) 跨模态多视图对齐（Cross-modal Multi-view）
+
+使用多种视角的图片（如同一地点不同角度），并把它们与相同文本 prompt 对齐。
+
+### c) 近邻对齐（Neighbor Contrast，类似 MoCo）
+
+在训练过程中，保持一个较长的、异步更新的“负样本队列”（如 MoCo）；
+
+每个数据点除了与当前 batch 的正样本对齐，还要与历史队列内样本保持对比，避免过拟合当前 batch。
+
+
+### prompts 级别的文本微调
+
+准备多样 prompt 模板：
+
+“A photo of a {label}”
+
+“A high-resolution image of {label} in the city”
+
+用真实图像 + 多个 prompt 生成图文对；
+
+在训练中只更新文本编码器，使其学会内容不变但风格多元后的表征也一致；
+
+完成后文本编码器更稳健、图像编码器不被风格扰动影响。
+
+
+### 组合关系分类增强（e.g. “红色车 vs 蓝色车”）
+
+准备成对的 image-prompt 数据，比如：
+
+图像 A：一辆红色车，文本 "red car"
+
+图像 B：一辆蓝色车，文本 "blue car"
+
+在微调时，采用对比式损失，让模型将 A 与 "red car" 对齐，与 "blue car" 区分；
+
+这样模型学到颜色差异在视觉与语言空间中的对齐关系；
+
+复用在“尺寸差异”、“材质差异”、“功能差异”等组合关系上都有效。
+
+
+### 用 LLM 生成对比描述
+
+比如你有两张图：
+
+图一：红色车在街上
+
+图二：蓝色车在街上
+
+你让 LLM（如 GPT）生成对比 prompt：
+
+“A red car parked in front of a building.”
+
+“A blue car parked in front of a building.”
+
+然后把这些文本对与图像对一起训练，让模型更敏感：
+
+color（红 VS 蓝）
+
+位置（red in front VS blue in front）
+
+这增强模型对细微属性的理解，不只是“车” vs “非车”。
+
 
 
 
